@@ -6,6 +6,7 @@
     <version>0.0.1</version>
     <modules>
         <module>guide-log</module>
+        <module>guide-springboot-server</module>
     </modules>
     <packaging>pom</packaging>
 
