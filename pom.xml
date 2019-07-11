@@ -7,6 +7,8 @@
     <modules>
         <module>guide-log</module>
         <module>guide-springboot-server</module>
+        <module>good-rtb-design-parttern</module>
+        <module>guide-maven-jar-single</module>
     </modules>
     <packaging>pom</packaging>
 
