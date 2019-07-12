@@ -1,0 +1,3 @@
+optimusPrime = org.zlx.spi.impl.OptimusPrimeImpl
+sdf = org.zlx.spi.impl.OptimusPrimeImpl
+bumblebee = org.zlx.spi.impl.BumblebeeImpl
