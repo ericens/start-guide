@@ -5,16 +5,12 @@
 
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>guide-log</artifactId>
     <groupId>org.zlx</groupId>
     <version>0.0.1</version>
+    <artifactId>good-rpc-impl</artifactId>
 
     <build>
-
         <plugins>
-
-            <!--指定编译版本，而不是让 idea 来选择。不用在idea设置-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -29,14 +25,10 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <!--指定编译版本，而不是让 idea 来选择。不用在idea设置-->
-
-
-
         </plugins>
+
     </build>
     <dependencies>
-
 
 
         <!--日志依赖开始-->
@@ -81,6 +73,7 @@
 
 
 
+
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -91,7 +84,22 @@
 
 
 
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
 
     </dependencies>
+
+
+
 
 </project>

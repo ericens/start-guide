@@ -11,6 +11,7 @@
         <module>guide-SPI-java-dubbo</module>
         <module>guide-maven-jar-single</module>
         <module>guide-mock</module>
+        <module>good-rpc-impl</module>
     </modules>
     <packaging>pom</packaging>
 
