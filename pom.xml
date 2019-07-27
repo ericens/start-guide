@@ -12,6 +12,7 @@
         <module>guide-maven-jar-single</module>
         <module>guide-mock</module>
         <module>good-rpc-impl</module>
+        <module>guide-jvm-gc</module>
     </modules>
     <packaging>pom</packaging>
 

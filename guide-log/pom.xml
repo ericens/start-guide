@@ -26,7 +26,10 @@
                     <compilerArgument>-nowarn</compilerArgument>
                     <source>1.8</source>
                     <target>1.8</target>
+
+                    <!--指定项目 编码-->
                     <encoding>UTF-8</encoding>
+
                 </configuration>
             </plugin>
             <!--指定编译版本，而不是让 idea 来选择。不用在idea设置-->
