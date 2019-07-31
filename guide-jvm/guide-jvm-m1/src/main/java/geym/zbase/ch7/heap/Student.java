@@ -3,7 +3,13 @@ package geym.zbase.ch7.heap;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ *  8+4      Ù–‘+ 4 +4 +4
+ */
 public class Student {
+    private int xx;
+    private int yy;
+    private int zz;
     private int id;
     private String name;
     private List<WebPage> history=new Vector<WebPage>();

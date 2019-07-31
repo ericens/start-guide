@@ -28,6 +28,25 @@ public class TraceStudent {
         Student st3 = new Student(3, "billy");
         Student st5 = new Student(5, "alice");
         Student st7 = new Student(7, "taotaoxxxxxxx");
+
+        StringBuffer str37=new StringBuffer();
+        StringBuffer str57=new StringBuffer();
+        StringBuffer str7=new StringBuffer();
+        for (int i = 0; i < webpages.size(); i++) {
+            if (i % st3.getId() == 0 && i % st7.getId() == 0){
+                str37.append(","+i);
+            }
+            if (i % st5.getId() == 0 && i % st7.getId() == 0){
+                str57.append(","+i);
+            }
+            if (i % st7.getId() == 0){
+                str7.append(","+i);
+            }
+        }
+        System.out.println("37:"+str37.toString());
+        System.out.println("57:"+str57.toString());
+        System.out.println("7:"+str7.toString());
+
         for (int i = 0; i < webpages.size(); i++) {
             if (i % st3.getId() == 0)
                 st3.visit(webpages.get(i));

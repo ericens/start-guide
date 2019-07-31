@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="PROJECT_NAME" value="guide-log"/>
+    <property name="PROJECT_NAME" value="guide-rate-limit"/>
     <!-- 项目名称 -->
     <property name="LOG_HOME" value="./logs" />
 
@@ -56,7 +56,7 @@
     <logger name="org.apache.http"  level="ERROR" />
 
     <!-- 日志模块输出 -->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="DEBUG_LOG" />
         <appender-ref ref="ERROR_LOG" />
