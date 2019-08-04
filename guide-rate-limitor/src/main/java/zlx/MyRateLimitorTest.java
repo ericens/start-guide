@@ -1,6 +1,9 @@
 package zlx;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+
+import java.util.ArrayDeque;
 
 /**
  * Created by ericens on 2017/5/18.
@@ -9,38 +12,80 @@ import lombok.extern.slf4j.Slf4j;
 public class MyRateLimitorTest {
 
     /**
-     *
+     * 200w qps 跑5分钟。
      */
 
 
-    public void blockTest(){
-        MyRateLimitor myRateLimitor=new MyRateLimitor(2000, MyRateLimitor.LimitModel.BlocK);
+    int defaultQPS=2;
+    long modelTestRunCount=defaultQPS*100;
+    long queueTestRunCount=defaultQPS*30;
+    @Test
+    public void defaultBlockTest(){
+        log.info("blocking test start.......................");
+        MyRateLimitor myRateLimitor=new MyRateLimitor(defaultQPS, MyRateLimitor.LimitModel.BlocK,new ArrayDeque<>(defaultQPS));
+        doTest(myRateLimitor);
+        log.info("blocking test end.......................");
+
+    }
+
+    @Test
+    public void myQueueBlockTest(){
+        log.info("myQueueBlockTest test start.......................");
+        MyRateLimitor myRateLimitor=new MyRateLimitor(defaultQPS, MyRateLimitor.LimitModel.BlocK,new MyLimitorQueue(defaultQPS));
+        doTest(myRateLimitor);
+        log.info("myQueueBlockTest test end.......................");
+
+    }
+
+
+
+    @Test
+    public void noBlockTest(){
+        log.info("noBlocking test start.......................");
+        MyRateLimitor myRateLimitor=new MyRateLimitor(defaultQPS, MyRateLimitor.LimitModel.NoNBlock);
+        doTest(myRateLimitor);
+        log.info("noBlocking test end.......................");
+
+    }
+
+
+
+
+
+    @Test
+    public void myQueueTest(){
+        log.info("myQueueTest test start.......................");
+        MyRateLimitor myRateLimitor=new MyRateLimitor(defaultQPS, MyRateLimitor.LimitModel.BlocK,new MyLimitorQueue(defaultQPS));
+        doTest(myRateLimitor,queueTestRunCount);
+        log.info("myQueueTest test end.......................");
+
+    }
+
+    @Test
+    public void defaultArrayQueueTest(){
+        log.info("defaultArrayQueueTest test start.......................");
+        MyRateLimitor myRateLimitor=new MyRateLimitor(defaultQPS, MyRateLimitor.LimitModel.BlocK,new ArrayDeque<>(defaultQPS));
+        doTest(myRateLimitor,queueTestRunCount);
+        log.info("defaultArrayQueueTest test end.......................");
+
+    }
+
+
+    public void doTest(MyRateLimitor myRateLimitor, long runCount){
         Long start=System.currentTimeMillis();
-        for(int i=0;i<2000*10000;i++){
+        for(long i=0;i<runCount;i++){
             log.debug("result:{}", myRateLimitor.acquire(i));
-//            log.debug("result:{}","just run");
         }
         long end=System.currentTimeMillis();
 
-        log.info("elapse:{}", (end-start)/1000);
+        log.info("elapse:{}", (end-start));
 
     }
 
-
-    public void nonBlockTest(){
-        MyRateLimitor myRateLimitor=new MyRateLimitor(2000, MyRateLimitor.LimitModel.NoNBlock);
-        for(int i=0;i<100;i++){
-            log.info("result:{}", myRateLimitor.acquire(i));
-        }
+    public void doTest(MyRateLimitor myRateLimitor){
+        doTest(myRateLimitor,modelTestRunCount);
 
     }
-    public static void main(String[] args) {
-        MyRateLimitorTest test=new MyRateLimitorTest();
-        test.blockTest();
-//        test.nonBlockTest();
-    }
-
-
 
 
 }

@@ -1,4 +1,5 @@
 package zlx;
+import	java.util.Queue;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,6 +23,11 @@ public class MyRateLimitor {
     int qps;
     Double singleWaitNano;
     LimitModel limitModel;
+
+    /**
+     * 使用queue,容易产生gc
+     * 可以使用数据，自己控制上下限，循环使用数组，没有扩容。
+     */
     Queue<Long> queue;
 
     long NanoConstantToMS=1000*1000;
@@ -29,11 +35,16 @@ public class MyRateLimitor {
     public MyRateLimitor(int qps){
         this(qps, LimitModel.BlocK);
     }
-    public MyRateLimitor(int qps, LimitModel limitModel){
+
+    public MyRateLimitor(int qps,LimitModel limitModel){
+        this(qps, limitModel,new ArrayDeque<>(qps));
+    }
+
+    public MyRateLimitor(int qps, LimitModel limitModel, Queue<Long> queue){
         this.limitModel = limitModel;
         this.qps=qps;
         this.singleWaitNano =(1000d/qps)*NanoConstantToMS;
-        this.queue=new ArrayDeque(qps+100);
+        this.queue=queue;
     }
 
     public boolean acquire(){
@@ -55,11 +66,11 @@ public class MyRateLimitor {
             needWait=false;
         }else {
             if(now-oldest>= queue.size()* singleWaitNano){
-                //间隔 够久了
+                //间隔 够久了，不用等
                 needWait=false;
             }
             else{
-                // 价格不够久，要等待
+                // 间隔不够久，要等待
                waitTime=  queue.size()* singleWaitNano - (now-oldest);
                needWait=true;
             }
@@ -80,6 +91,14 @@ public class MyRateLimitor {
                     break;
             }
         }
+
+        //todo 移除的时机
+        if(queue.size()>=qps){
+            log.info("remove the oldest in queue");
+            queue.remove();
+        }
+
+
         queue.add(now);
         return true;
     }
