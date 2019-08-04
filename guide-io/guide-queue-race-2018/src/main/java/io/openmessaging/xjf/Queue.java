@@ -212,7 +212,7 @@ public class Queue {
             firstGet = false;
         }
         if (offset > queueLength - 1) {
-            return DefaultQueueStoreImpl.EMPTY;
+            return QueueStoreImpl.EMPTY;
         }
         int startIndex = (int) offset;
         int endIndex = Math.min(startIndex + (int) num - 1, queueLength - 1);

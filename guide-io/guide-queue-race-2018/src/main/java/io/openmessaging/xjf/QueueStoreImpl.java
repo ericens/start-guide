@@ -2,6 +2,7 @@ package io.openmessaging.xjf;
 
 import io.openmessaging.QueueStore;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
@@ -14,15 +15,19 @@ import java.util.concurrent.atomic.AtomicLong;
  * 这是一个简单的基于内存的实现，以方便选手理解题意；
  * 实际提交时，请维持包名和类名不变，把方法实现修改为自己的内容；
  */
-public class DefaultQueueStoreImpl extends QueueStore {
+public class QueueStoreImpl extends QueueStore {
 
-    public static final String dir = "/Users/ericens/tmp/";
 
     public static Collection<byte[]> EMPTY = new ArrayList<>();
     private static final int FILE_SIZE = 1;
+    public static final String dir = "/Users/ericens/tmp/";
 
-    // <queueName, Queue>
-    private ConcurrentHashMap<String, Queue>[] queueMaps;
+
+    /**
+     *  <queueName, Queue>
+     *  数组里的一个element是一个map,对应一个文件, 一个map里面多queue.
+     */
+    ConcurrentHashMap<String, Queue>[] queueMaps;
 
     // FILE_INDEX can be different from FILE_SIZE
     private static final int FILE_INDEX = 1;
@@ -31,13 +36,17 @@ public class DefaultQueueStoreImpl extends QueueStore {
     private FileChannel[] channels;
     private AtomicLong[] wrotePositions;
 
-    public DefaultQueueStoreImpl() {
+    public QueueStoreImpl() {
         channels = new FileChannel[FILE_SIZE];
         wrotePositions = new AtomicLong[FILE_SIZE];
         queueMaps = new ConcurrentHashMap[FILE_INDEX];
         for (int i = 0; i < FILE_SIZE; i++) {
             RandomAccessFile memoryMappedFile = null;
             try {
+                File file=new File(dir + "all_" + i + ".data");
+                if(file.exists()){
+                    file.delete();
+                }
                 memoryMappedFile = new RandomAccessFile(dir + "all_" + i + ".data", "rw");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

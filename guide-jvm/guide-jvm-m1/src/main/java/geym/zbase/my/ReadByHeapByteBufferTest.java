@@ -1,34 +1,86 @@
 package geym.zbase.my;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.locks.LockSupport;
 
+
+@Slf4j
 public class ReadByHeapByteBufferTest {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    List<Thread> list=new ArrayList();
+    CountDownLatch countDownLatch=new CountDownLatch(1);
+
+    public void contoll() throws IOException, InterruptedException {
+        log.info("ÊäÈë¹Û²ì µÚ¶þ´ÎÄÚ´æ·ÖÅä£¬Ê¹ÓÃcache£º");
+        readStart("start");
+        list.forEach(
+                t->{
+                    LockSupport.unpark(t);
+                }
+        );
+
+        countDownLatch.await();
+    }
+
+    public void readStart(String expect) throws IOException {
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(System.in));
+        String str = null;
+        while (true) {
+            str = reader.readLine();
+            if(str!=null && str.equals(expect)){
+                break;
+            }
+        }
+
+    }
+    public   List<Thread> oneCall() throws InterruptedException, IOException {
         File data = new File("/tmp/data.txt");
         FileChannel fileChannel = new RandomAccessFile(data, "rw").getChannel();
-        ByteBuffer buffer = ByteBuffer.allocate(4 * 1024 * 1024);
-        for (int i = 0; i < 1000; i++) {
-            Thread.sleep(1000);
-            new Thread(new Runnable() {
+        ByteBuffer buffer = ByteBuffer.allocate(5 * 1024 * 1024);
+        log.info("ÊäÈë¹Û²ì µÚÒ»´ÎÄÚ´æ·ÖÅä£º");
+        readStart("start");
+
+        for (int i = 0; i < 50; i++) {
+            Thread.sleep(200);
+            Thread thread=new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        //ä»Žæ–‡ä»¶è¯»å¯ä»¥ï¼Œä½¿ç”¨å †å¤–å†…å­˜,  è°ƒç”¨äº†å †å¤–å†…å­˜åˆ†é…ï¼Œ
+                        log.info("Ïß³ÌµÚÒ»´Î¶ÁÈ¡£ºÊ¹ÓÃ¶ÑÍâÄÚ´æ,  µ÷ÓÃÁË¶ÑÍâÄÚ´æ·ÖÅä");
                         fileChannel.read(buffer);
-                        //ä»…ä»…putIntï¼Œæ— æ³•ä½¿ç”¨å †å¤–å†…å­˜
-                        buffer.putInt(22);
-
                         buffer.clear();
-                    } catch (IOException e) {
+
+                        LockSupport.park();
+                        log.info("Ïß³ÌµÚ¶þ´Î¶ÁÈ¡£ºÊ¹ÓÃ¶ÑÍâÄÚ´æ,Ã»ÓÐÐÂÔöÄÚ´æ,  µ÷ÓÃÁËthreadLocalµÄ cache");
+                        fileChannel.read(buffer);
+                        buffer.clear();
+
+
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-            }).start();
+            });
+            list.add(thread);
+            thread.start();
         }
+        return list;
+    }
+
+
+
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        ReadByHeapByteBufferTest readByHeapByteBufferTest=new ReadByHeapByteBufferTest();
+        readByHeapByteBufferTest.oneCall();
+        readByHeapByteBufferTest.contoll();
     }
 }
 

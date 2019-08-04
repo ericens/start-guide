@@ -54,8 +54,8 @@ public class DemoTester {
             queueNumMap.put("Queue-" + i, new AtomicInteger(0));
         }
         try {
-            Class queueStoreClass = Class.forName("io.openmessaging.my.MyxQueueStore");
-//            Class queueStoreClass = Class.forName("io.openmessaging.xjf.DefaultQueueStoreImpl");
+//            Class queueStoreClass = Class.forName("io.openmessaging.my.MyxQueueStore");
+            Class queueStoreClass = Class.forName("io.openmessaging.xjf.QueueStoreImpl");
             queueStore = (QueueStore) queueStoreClass.newInstance();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -253,11 +253,10 @@ public class DemoTester {
                         Collection<byte[]> msgs = queueStore.get(queueName, index, 10);
                         if (msgs != null && msgs.size() > 0) {
                             pullOffsets.get(queueName).getAndAdd(msgs.size());
-                            for (byte[] msg : msgs) {//new String(((ArrayList<byte[]>)queueStore.get("Queue-848",1000,10)).get(0))
-                                //((DefaultQueueStoreImpl) queueStore).commitLogMap.get(((DefaultQueueStoreImpl) queueStore).queueNameQueueNoMap.get("Queue-848"))
+                            for (byte[] msg : msgs) {
                                 if (!new String(msg).equals(String.valueOf(index++))) {
-                                    System.out.println(new String(msg) + "===" + index);
-                                    System.out.println("Check error");
+                                    log.error(new String(msg) + "===" + index);
+                                    log.error("Check error");
                                     System.exit(-1);
                                 }
 

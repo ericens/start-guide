@@ -2,6 +2,7 @@ package io.openmessaging.my;
 
 import io.openmessaging.QueueStore;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -19,7 +20,12 @@ public class MyxQueueStore extends QueueStore {
     FileChannel fileChannel;
 
     public MyxQueueStore() throws FileNotFoundException {
+        File f=new File("/Users/ericens/tmp/alitest/001.data");
+        if(f.exists()){
+            f.delete();
+        }
         fileChannel=new RandomAccessFile("/Users/ericens/tmp/alitest/001.data","rw").getChannel();
+
     }
 
     @Override
