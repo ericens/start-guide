@@ -92,7 +92,7 @@ public class MyRateLimitor {
             }
         }
 
-        //todo 移除的时机
+        //todo 移除的时机， 滑动窗口向后移动
         if(queue.size()>=qps){
             log.info("remove the oldest in queue");
             queue.remove();
