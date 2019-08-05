@@ -1,6 +1,6 @@
 import com.alibaba.fastjson.JSON;
-import dao.Order;
-import dao.SalesOrderDAO;
+import mock.dao.Order;
+import mock.dao.SalesOrderDAO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

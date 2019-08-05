@@ -1,4 +1,4 @@
-package dao;
+package mock.dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

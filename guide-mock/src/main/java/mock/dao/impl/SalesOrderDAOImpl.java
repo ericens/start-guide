@@ -1,7 +1,7 @@
-package dao.impl;
+package mock.dao.impl;
 
-import dao.Order;
-import dao.SalesOrderDAO;
+import mock.dao.Order;
+import mock.dao.SalesOrderDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
