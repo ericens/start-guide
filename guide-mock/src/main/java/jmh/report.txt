@@ -1,9 +1,0 @@
-Benchmark                               Mode  Cnt       Score   Error  Units
-LogBenchmark.testConcatenatingStrings  thrpt    2   52936.618          ops/s
-LogBenchmark.testIfDebugEnabled        thrpt    2  100024.608          ops/s
-LogBenchmark.testVariableArguments     thrpt    2   83846.869          ops/s
-
-
-Benchmark                      Mode  Cnt    Score   Error  Units
-ZeroCopyTest.commonFileCopy    avgt    2  191.992          ms/op
-ZeroCopyTest.transferFromDemo  avgt    2  194.304          ms/op

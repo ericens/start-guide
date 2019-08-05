@@ -10,9 +10,8 @@
         <module>good-rtb-design-parttern</module>
         <module>guide-SPI-java-dubbo</module>
         <module>guide-maven-jar-single</module>
-        <module>guide-mock</module>
+        <module>guide-test</module>
         <module>good-rpc-impl</module>
-
         <module>guide-jvm</module>
         <module>guide-io</module>
 
