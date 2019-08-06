@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 
 
 @Fork(1)
-@Warmup(iterations =2)
-@Measurement(iterations =2)
+@Warmup(iterations =2,time = 3,batchSize =1000)
+@Measurement(iterations =2,time = 3)
 public class LogBenchmark {
 
     private static final Logger logger = LoggerFactory.getLogger(LogBenchmark.class);

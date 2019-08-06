@@ -38,8 +38,8 @@ import java.util.concurrent.atomic.LongAdder;
  *  3. fork 一次（包含一次 warm up和一次 真正测试），默认是5次
  *  4. 全局共享这个实例，而不是每个线程一个实例。
  */
-@Warmup(iterations = 2)
-@Measurement(iterations = 2)
+@Warmup(iterations = 2,time =2,batchSize =1000)
+@Measurement(iterations = 2,time =3)
 @Fork(1)
 @State(value = Scope.Benchmark)
 public class AtomicBenchmark {
