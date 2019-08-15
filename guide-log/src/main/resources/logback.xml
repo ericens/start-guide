@@ -9,7 +9,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出,%d:日期;%thread:线程名;%-5level：级别,从左显示5个字符宽度;%msg:日志消息;%n:换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <pattern>%x [%X{txid}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -51,12 +51,12 @@
     </appender>
 
 
-    <logger name="org.springframework"  level="INFO" />
-    <logger name="org.mybatis"  level="ERROR" />
-    <logger name="org.apache.http"  level="ERROR" />
+    <logger name="sl4j.package1"                 level="INFO" />
+    <logger name="sl4j.package2"                 level="debug" />
+    <logger name="sl4j.package2.LogExampleWarn" level="warn" />
 
     <!-- 日志模块输出 -->
-    <root level="debug">
+    <root level="warn">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="DEBUG_LOG" />
         <appender-ref ref="ERROR_LOG" />

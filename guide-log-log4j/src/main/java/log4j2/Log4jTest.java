@@ -3,7 +3,6 @@ package log4j2;
 import log4j2.package1.LogExample;
 import log4j2.package2.LogExampleDebug;
 import log4j2.package2.LogExampleWarn;
-import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
 
 import java.util.UUID;

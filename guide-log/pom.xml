@@ -42,8 +42,10 @@
 
 
 
-        <!--日志依赖开始-->
-        <!-- logback日志配置开始 -->
+
+
+        <!--日志依赖开始           *****************       使用sl4j的api      ****   -->
+        <!--                        logback实现        -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
@@ -59,11 +61,23 @@
             <artifactId>logback-classic</artifactId>
             <version>1.1.2</version>
         </dependency>
+        <!--                        logback实现        -->
+
+
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>1.7.7</version>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.28</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-ext</artifactId>
+            <version>1.7.28</version>
+        </dependency>
+
+        <!--日志依赖开始           *****************       使用sl4j的api      ****   -->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
