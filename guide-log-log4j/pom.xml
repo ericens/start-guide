@@ -48,11 +48,13 @@
             <version>2.12.0</version>
         </dependency>
 
+        <!--异步日志依赖他，log4j还没有包含，得自己引入-->
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.12.0</version>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.2</version>
         </dependency>
+
 
         <!-- *************************************************** log4j -->
 
@@ -73,6 +75,15 @@
             <version>1.1.41</version>
         </dependency>
         <!--   *******************JSON********************          -->
+
+
+        <!--   *******************  jmh    ********************          -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>1.21</version>
+        </dependency>
+        <!--   *******************  jmh    ********************          -->
 
 
 

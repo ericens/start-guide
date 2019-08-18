@@ -14,6 +14,7 @@
         <module>good-rpc-impl</module>
         <module>guide-jvm</module>
         <module>guide-io</module>
+        <module>guide-log-log4j</module>
         <module>guide-rate-limitor</module>
     </modules>
     <packaging>pom</packaging>
