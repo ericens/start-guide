@@ -58,7 +58,7 @@
 
     <!-- 日志模块输出 -->
     <root level="info">
-        <!--<appender-ref ref="STDOUT" />-->
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="ERROR_LOG" />
         <appender-ref ref="DEBUG_LOG"/>
     </root>

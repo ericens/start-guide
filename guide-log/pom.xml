@@ -43,6 +43,12 @@
 
 
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
 
         <!--日志依赖开始           *****************       使用sl4j的api      ****   -->
         <!--                        logback实现        -->

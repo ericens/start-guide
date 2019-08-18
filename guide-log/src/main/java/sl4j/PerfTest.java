@@ -1,10 +1,12 @@
 package sl4j;
 
-import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 空跑：    PerfTest.logTest  thrpt    2  4 8245 0201.573          ops/s
@@ -13,14 +15,14 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Warmup(iterations = 1,time =1)
 @Measurement(iterations = 2,time =10)
 @State(value = Scope.Benchmark)
-@Slf4j
+//@Slf4j
 public class PerfTest {
-    //    todo 使用后，不能打印debug日志
-    //    Logger log= LoggerFactory.getLogger(this.getClass());
+    Logger log= LoggerFactory.getLogger(this.getClass());
 
     @Threads(20)
     @Benchmark
     @Fork(1)
+    @Test
     public void logTest(){
         log.debug("this is the test ");
     }
