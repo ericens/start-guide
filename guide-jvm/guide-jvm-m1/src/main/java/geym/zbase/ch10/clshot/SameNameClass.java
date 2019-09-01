@@ -35,14 +35,13 @@ public class SameNameClass {
     }
 
     private static String getClassFile(String name) {
-        StringBuffer sb = new StringBuffer(".\\bin");
+        StringBuffer sb = new StringBuffer();
         name = name.replace('.', File.separatorChar) + ".class";
         sb.append(File.separator + name);
         return sb.toString();
     }
 
-    private static byte[] loadClassBytes(String className) throws ClassNotFoundException {
-        try {
+    private static byte[] loadClassBytes(String className) throws IOException {
             String classFile = getClassFile(className);
             FileInputStream fis = new FileInputStream(classFile);
             FileChannel fileC = fis.getChannel();
@@ -60,8 +59,6 @@ public class SameNameClass {
             }
             fis.close();
             return baos.toByteArray();
-        } catch (IOException fnfe) {
-            throw new ClassNotFoundException(className);
-        }
+
     }
 }
