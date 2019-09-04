@@ -7,7 +7,7 @@ package geym.zbase.ch10.brkparent;
  */
 public class ClassLoaderTest {
     public static void main(String[] args) throws ClassNotFoundException {
-        OrderClassLoader myLoader=new OrderClassLoader("D:/tmp/clz/");
+        OrderClassLoader myLoader=new OrderClassLoader("/Users/ericens/git/my/start-guide/guide-jvm/guide-jvm-m1/target/classes");
         Class clz=myLoader.loadClass("geym.zbase.ch10.brkparent.DemoA");
         System.out.println(clz.getClassLoader());
         

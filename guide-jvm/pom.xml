@@ -11,7 +11,7 @@
 
     <modules>
         <module>guide-jvm-m1</module>
-        <!--<module>guide-jvm-m2</module>-->
+        <module>guide-jvm-m2</module>
 
     </modules>
 
