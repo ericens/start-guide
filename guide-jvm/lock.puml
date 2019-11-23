@@ -1,0 +1,29 @@
+@startuml
+
+T1 -> mark : check 状态01: 没有锁定
+T1 -> mark : copy mark 到线程栈 lock record
+T1 -> mark : cas 设置 mark 指针指向 lock record
+
+group cas成功,说明获取了锁
+    T1 -> mark: 设置状态 00，轻量级锁定
+end
+
+group cas失败,且指针不指向自己
+    T2 -> mark: 设置状态 10，膨胀为重量级锁
+    T2 -> T2 : 阻塞自己
+end
+
+
+
+group cas释放锁
+    T1 -> mark: 用lock record替换 mark
+    group cas成功
+        T1 -> T1: 释放成功了
+    end
+
+    group cas失败
+        T1 -> T2: 唤醒被挂起的线程
+    end
+end
+
+@enduml

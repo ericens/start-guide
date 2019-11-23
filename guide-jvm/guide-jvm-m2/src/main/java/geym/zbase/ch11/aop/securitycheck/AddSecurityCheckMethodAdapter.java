@@ -4,6 +4,12 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
+/**
+ *
+ * https://www.iteye.com/blog/z466459262-1110194
+ * https://www.jianshu.com/p/d8c2ada6e82f
+ *
+ */
 class AddSecurityCheckMethodAdapter extends MethodVisitor { 
 	 public AddSecurityCheckMethodAdapter(MethodVisitor mv) { 
 		 super(Opcodes.ASM4,mv);

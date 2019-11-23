@@ -38,7 +38,8 @@ public class AsmCreateField extends ClassLoader implements Opcodes {
         FileOutputStream fos=new FileOutputStream(new File("/Users/ericens/tmp/ExampleCreateF.class"));
         fos.write(code);
         fos.close();
-        
+
+
 		AsmCreateField loader = new AsmCreateField();
 		Class exampleClass = loader.defineClass("ExampleCreateF", code, 0, code.length);
 		exampleClass.getMethods()[0].invoke(null, new Object[] { null });

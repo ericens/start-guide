@@ -1,6 +1,9 @@
 package geym.zbase.ch10.brkparent;
 
+import geym.zbase.ch7.heap.Student;
+
 import java.io.*;
+import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
@@ -14,6 +17,7 @@ import java.nio.channels.WritableByteChannel;
  */
 public class OrderClassLoader extends ClassLoader {
 	private String fileName;
+
 
 	public OrderClassLoader(String fileName) {
 		this.fileName = fileName;
@@ -50,7 +54,9 @@ public class OrderClassLoader extends ClassLoader {
 				}
 				fis.close();
 				byte[] bytes = baos.toByteArray();
-				clazz = defineClass(className, bytes, 0, bytes.length);
+
+//				ClassLoader.class.
+//				clazz = super.defineClass(className, bytes, 0, bytes.length);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -59,6 +65,8 @@ public class OrderClassLoader extends ClassLoader {
 		}
 		return clazz;
 	}
+
+
 
 	private byte[] loadClassBytes(String className) throws ClassNotFoundException {
 		try {
