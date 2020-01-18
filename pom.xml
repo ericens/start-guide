@@ -11,6 +11,7 @@
         <module>guide-SPI-java-dubbo</module>
         <module>guide-maven-jar-single</module>
         <module>guide-test</module>
+        <module>guide-agent</module>
         <module>good-rpc-impl</module>
         <module>guide-jvm</module>
         <module>guide-io</module>

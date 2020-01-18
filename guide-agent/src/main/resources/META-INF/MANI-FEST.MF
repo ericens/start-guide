@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Agent-Class: junit.aop.TestAgent
+Can-Retransform-Classes: true
