@@ -18,7 +18,6 @@ public class ClassLoaderTest {
             cl=cl.getParent();
         }
 
-        Class clz2=myLoader.loadClass("java.lang.Long");
 
     }
 
