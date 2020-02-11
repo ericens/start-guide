@@ -29,8 +29,8 @@ public class ConsistentHash {
             addMachine(node);
         }
 
-        log.info("the circle map:{}", JSON.toJSONString(circle,true));
-        log.info("the machine_nodeMap map:{}", JSON.toJSONString(machine_nodeMap,true));
+        log.info("hash环: the circle map:{}", JSON.toJSONString(circle,true));
+        log.info("机器对应的虚拟节点，调试用 ： machine_nodeMap map:{}", JSON.toJSONString(machine_nodeMap,true));
 
     }
 
@@ -48,7 +48,7 @@ public class ConsistentHash {
 
     public void addNewMachine(String machine){
         machine_data.putIfAbsent(machine,new HashMap<>());
-
+        log.info("增加节点，迁移数据");
         for (int i = 0; i < numberOfReplicas; i++){
             int hashcode=RandomUtils.nextInt();
 
@@ -75,9 +75,9 @@ public class ConsistentHash {
     }
     public void removeMachine(String machine) {
         List list=this.machine_nodeMap.remove(machine);
-        log.info("machine crash :{}, vnode:{}",machine,list);
+        log.info("节点失效： machine crash :{}, vnode:{}",machine,list);
 
-        log.info("lost data:{}",this.machine_data.get(machine));
+        log.info("丢失数据：lost data:{}",this.machine_data.get(machine));
 
 
 
