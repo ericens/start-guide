@@ -1,4 +1,5 @@
 package junit.alg.consistenceHash;
+import	java.util.HashSet;
 import	java.util.SortedMap;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -44,8 +45,8 @@ public class TreeMapTest {
 
 
 
-
-
+        HashSet s=new HashSet();
+        s.retainAll(new HashSet());
 
     }
 }
