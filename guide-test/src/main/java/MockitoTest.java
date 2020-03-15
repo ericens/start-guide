@@ -6,14 +6,39 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.util.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
 
 import static org.mockito.ArgumentMatchers.any;
 
 @Slf4j
 public class MockitoTest  {
+
+
+    /**
+     *  voidTest 和 voidTest2字节码 一样
+     *  申明放在循环里 没有消耗性能。
+     */
+    public void voidTest(){
+        List list=new ArrayList(16);
+        Map m;
+        for (int i = 0; i < 10; i++) {
+          m=new HashMap();
+          list.add(m);
+        }
+
+    }
+
+    public void voidTest2(){
+        List list=new ArrayList(16);
+        for (int i = 0; i < 10; i++) {
+            Map m=new HashMap();
+            list.add(m);
+        }
+
+    }
+
     /**
      * 传入调用方法中的参数，可以使用Mockito中的any()来做参数的匹配，
      * 代表任意的值，还有anyString(), anyInt(), any(Class<T> clazz)等，具体可以查看org.mockito.Matchers。

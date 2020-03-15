@@ -21,6 +21,8 @@ public class WeakRef {
             return "[id="+String.valueOf(id)+",name="+name+"]";
         }
     }
+    Thread t=new Thread();
+
     public static void main(String[] args) {
         User u=new User(1,"geym");
         WeakReference<User> userWeakRef = new WeakReference<User>(u);

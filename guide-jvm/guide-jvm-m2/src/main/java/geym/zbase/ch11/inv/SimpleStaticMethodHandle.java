@@ -11,6 +11,11 @@ import java.lang.invoke.MethodType;
  */
 public class SimpleStaticMethodHandle{
 	public static void main(String[] args) throws Throwable {
+
+		Encode encode = Base::encrypt;
+		System.out.println(encode);
+
+
 		SimpleStaticMethodHandle obj = new SimpleStaticMethodHandle();
 		System.out.println(obj.callSin());
 	}
@@ -19,5 +24,20 @@ public class SimpleStaticMethodHandle{
 		MethodHandle mh = MethodHandles.lookup().findStatic(Math.class, "sin",
 				MethodType.methodType(double.class,double.class));
 		return (double)mh.invokeExact(Math.PI/2);
+	}
+
+	interface Encode {
+		void encode(Derive person);
+	}
+	class Base {
+		public void encrypt() {
+			System.out.println("Base::speak");
+		}
+	}
+	class Derive extends Base {
+		@Override
+		public void encrypt() {
+			System.out.println("Derive::speak");
+		}
 	}
 }
