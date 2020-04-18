@@ -1,4 +1,6 @@
-package junit.aop;
+package agents;
+
+import toTestExample.Base;
 
 import java.lang.instrument.Instrumentation;
 
@@ -11,7 +13,7 @@ import java.lang.instrument.Instrumentation;
 
 
  */
-public class TestAgent {
+public class MyAgent {
 
     public static void agentmain(String args, Instrumentation inst) { // 指定我们自己定义的 Transformer，在其中利用 Javassist 做字节码替换
         inst.addTransformer(new TestTransformer(), true);

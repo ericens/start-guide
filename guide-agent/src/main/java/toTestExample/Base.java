@@ -1,4 +1,4 @@
-package junit.aop;
+package toTestExample;
 
 import java.lang.management.ManagementFactory;
 

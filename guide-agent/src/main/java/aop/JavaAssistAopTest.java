@@ -1,16 +1,17 @@
-package junit.aop;
+package aop;
 
 import javassist.*;
+import toTestExample.Base;
 
 import java.io.IOException;
 
-public class JavassistTest {
+public class JavaAssistAopTest {
 
     public static void main(String[] args) throws NotFoundException, CannotCompileException, IllegalAccessException, InstantiationException, IOException {
 //        Base b=new Base();
 
         ClassPool cp = ClassPool.getDefault();
-        CtClass cc = cp.get("junit.aop.Base");
+        CtClass cc = cp.get("toTestExample.Base");
         CtMethod m = cc.getDeclaredMethod("process");
         m.insertBefore("{ System.out.println(\"start\"); }");
         m.insertAfter("{ System.out.println(\"end\"); }");

@@ -1,4 +1,4 @@
-package junit.aop;
+package agents;
 
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -13,7 +13,7 @@ public class TestTransformer implements ClassFileTransformer {
         System.out.println("Transforming " + className);
         try {
             ClassPool cp = ClassPool.getDefault();
-            CtClass cc = cp.get("junit.aop.Base");
+            CtClass cc = cp.get("toTestExample.Base");
             CtMethod m = cc.getDeclaredMethod("process");
             m.insertBefore("{ System.out.println(\"start\"); }");
             m.insertAfter("{ System.out.println(\"end\"); }");
