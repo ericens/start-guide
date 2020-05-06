@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%x [%X{txid}] %d{M-d HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+
+        <!-- debug 级别日志输出 -->
+        <RollingRandomAccessFile name="debug-log" fileName="logs/debug/debug.log"
+                                 immediateFlush="true"
+                                 filePattern="logs/debug/debug.log.%d{yyyyMMddHHmm}">
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="30" modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingRandomAccessFile>
+
+        <!-- info 级别日志输出 -->
+        <RollingRandomAccessFile name="info-log" fileName="logs/info/info.log"
+                                 immediateFlush="false"
+                                 filePattern="logs/info/info.log.%d{yyyyMMddHH}">
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="30" modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingRandomAccessFile>
+
+        <!-- error 级别日志输出 -->
+        <RollingRandomAccessFile name="error-log" fileName="logs/error/error.log"
+                                 immediateFlush="false"
+                                 filePattern="logs/error/error.log.%d{yyyyMMddHH}">
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread] - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="30" modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingRandomAccessFile>
+        <!-- error 级别日志输出 -->
+
+    </Appenders>
+
+
+
+
+    <Loggers>
+        <Logger name="org.springframework" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="log4j.package1" level="warn" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="log4j2.package2.LogExampleDebug" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+
+
+        <Root level="debug" includeLocation="false">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

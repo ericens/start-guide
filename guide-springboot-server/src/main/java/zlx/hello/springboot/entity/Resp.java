@@ -1,4 +1,4 @@
-package hello.springboot.entity;
+package zlx.hello.springboot.entity;
 
 import com.alibaba.fastjson.JSON;
 import lombok.Builder;

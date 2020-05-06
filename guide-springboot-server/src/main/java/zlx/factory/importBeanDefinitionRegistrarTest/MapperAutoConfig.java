@@ -3,6 +3,7 @@ package zlx.factory.importBeanDefinitionRegistrarTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import zlx.factory.FactoryProcessor;
 
 /**
@@ -13,6 +14,7 @@ import zlx.factory.FactoryProcessor;
  *    1. 指定扫描范围
  *    2. 指定扫描目标，注解Mapper.class
  */
+@PropertySource("jdbc.properties")
 @Configuration
 //@Import(value = {MapperAutoConfiguredMyBatisRegistrar.class,FactoryProcessor.class})
 @Import(value = {MapperAutoConfiguredMyBatisRegistrar.class})

@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 public class Step4_BindApplicationContext {
 
 
+    /** PropertyPlaceholderConfigurer 自动加载*/
     @Test
     public void bindViaCodeXmlTest(){
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");

@@ -1,4 +1,4 @@
-package hello.springboot.entity;
+package zlx.hello.springboot.entity;
 
 import lombok.Data;
 
