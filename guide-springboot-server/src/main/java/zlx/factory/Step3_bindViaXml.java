@@ -17,8 +17,8 @@ public class Step3_bindViaXml {
     public void bindViaCodeXmlTest(){
         DefaultListableBeanFactory beanRegistry = new DefaultListableBeanFactory();
         BeanFactory container = bindViaCodeXml(beanRegistry);
-        FXNewsProvider newsProvider = (FXNewsProvider) container.getBean("provider");
-        newsProvider.print();
+        A newsProvider = (A) container.getBean("a");
+        newsProvider.toString();
     }
 
     /**
@@ -28,7 +28,8 @@ public class Step3_bindViaXml {
      */
     public static BeanFactory bindViaCodeXml(BeanDefinitionRegistry registry) {
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(registry);
-        reader.loadBeanDefinitions("beans.xml");
+        reader.loadBeanDefinitions("bean-redenpendency.xml");
+
         return (BeanFactory)registry;
 
         // 或者直接 //return new XmlBeanFactory(new ClassPathResource("../news-config.xml")); }

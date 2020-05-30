@@ -17,7 +17,7 @@ public class AsmCreateField extends ClassLoader implements Opcodes {
 
 		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
 		cw.visit(V1_7, ACC_PUBLIC, "ExampleCreateF", null, "java/lang/Object", null);
-		FieldVisitor fv=cw.visitField(ACC_PUBLIC+ACC_STATIC, "myName", "Ljava/lang/String;", null, "hello world!");
+		FieldVisitor fv=cw.visitField(ACC_PUBLIC+ACC_STATIC, "myName", "Ljava/lang/String;", null, "zlx.hello world!");
 		fv.visitEnd();
 		
 		MethodVisitor mw = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);

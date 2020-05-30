@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 
 public class DynBootStrap {
     public static CallSite bootstrap(Lookup lookup, String name, MethodType type,Object handle) throws Exception {  
-        MethodHandle mh0 = lookup.findVirtual(String.class, "substring", MethodType.methodType(String.class,int.class)).bindTo("hello");
+        MethodHandle mh0 = lookup.findVirtual(String.class, "substring", MethodType.methodType(String.class,int.class)).bindTo("zlx.hello");
 
         System.out.println("bootstrap called,name="+name);
         System.out.println(handle.toString());

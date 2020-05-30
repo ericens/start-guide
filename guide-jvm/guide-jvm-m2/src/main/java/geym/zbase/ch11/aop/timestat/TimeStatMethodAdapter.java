@@ -10,7 +10,7 @@ class TimeStatMethodAdapter extends MethodVisitor implements Opcodes {
     }
 
     public void visitCode() {
-        visitMethodInsn(Opcodes.INVOKESTATIC, "src/main/resource/ch11/aop/timestat/TimeStat", "start", "()V");
+        visitMethodInsn(Opcodes.INVOKESTATIC, "src/main/resource/ch11/zlx.aop/timestat/TimeStat", "start", "()V");
         super.visitCode();
     }
 
@@ -20,7 +20,7 @@ class TimeStatMethodAdapter extends MethodVisitor implements Opcodes {
 //            mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
 //            mv.visitLdcInsn("after");
 //            mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V");
-            visitMethodInsn(Opcodes.INVOKESTATIC, "src/main/resource/ch11/aop/timestat/TimeStat", "end", "()V");
+            visitMethodInsn(Opcodes.INVOKESTATIC, "src/main/resource/ch11/zlx.aop/timestat/TimeStat", "end", "()V");
         }
         mv.visitInsn(opcode);
     }

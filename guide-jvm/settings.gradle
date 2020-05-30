@@ -3,3 +3,7 @@
  */
 
 rootProject.name = 'guide-jvm'
+
+include  'guide-jvm-m1'
+include  'guide-jvm-m2'
+include  'guide-jvm-classLoader'

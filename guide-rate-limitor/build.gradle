@@ -9,12 +9,15 @@ plugins {
 
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
+
+    compile 'redis.clients:jedis:2.9.0'
+    compile group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+
     compile 'ch.qos.logback:logback-core:1.1.2'
     compile 'ch.qos.logback:logback-access:1.1.2'
     compile 'ch.qos.logback:logback-classic:1.1.2'

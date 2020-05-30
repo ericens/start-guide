@@ -17,7 +17,7 @@ class AddSecurityCheckMethodAdapter extends MethodVisitor {
 
 	 public void visitCode() { 
 	     Label continueLabel = new Label(); 
-		 visitMethodInsn(Opcodes.INVOKESTATIC, "geym/zbase/ch11/aop/securitycheck/SecurityChecker",
+		 visitMethodInsn(Opcodes.INVOKESTATIC, "geym/zbase/ch11/zlx.aop/securitycheck/SecurityChecker",
 			"checkSecurity", "()Z"); 
 		 visitJumpInsn(Opcodes.IFNE,continueLabel);
 		 visitInsn(Opcodes.RETURN);

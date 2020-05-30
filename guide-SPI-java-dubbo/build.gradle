@@ -9,10 +9,10 @@ plugins {
 
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenLocal()
+    mavenCentral()
 }
+
 dependencies {
     implementation 'junit:junit:4.12'
     implementation 'com.alibaba:dubbo:2.5.4'

@@ -13,9 +13,8 @@ subprojects {
 
 
     repositories {
-        // Use jcenter for resolving dependencies.
-        // You can declare any Maven/Ivy/file repository here.
-        jcenter()
+        mavenLocal()
+        mavenCentral()
     }
 
     sourceCompatibility = '1.8'

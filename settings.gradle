@@ -20,3 +20,14 @@ include  'guide-maven-jar-single'
 include  'guide-rate-limitor'
 include  'guide-springboot-server'
 include  'guide-test'
+
+//include  'guide-jvm-classLoader'
+
+//include ':guide-jvm-m1'
+//project(':guide-jvm-m1').projectDir = new File('guide-jvm/guide-jvm-m1')
+
+//include ':guide-jvm-m2'
+//project(':guide-jvm-m2').projectDir = new File('guide-jvm/guide-jvm-m2')
+
+include ':guide-jvm-classLoader'
+project(':guide-jvm-classLoader').projectDir = new File('guide-jvm/guide-jvm-classLoader')

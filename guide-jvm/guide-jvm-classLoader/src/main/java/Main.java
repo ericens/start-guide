@@ -63,10 +63,6 @@ public class Main {
         Son s=new Son();
 
 
-        Test test = new Test();  
-        test.fn();
-
-
         String a = "a";
         String b = "b";
         String c = a+b;

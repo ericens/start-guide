@@ -20,7 +20,6 @@ public class FXNewsProvider  {
     BeanFactory beanFactory;
 
     DowJonesNewsListener newsListener;
-    DowJonesNewsPersister newPersistener;
 
     String nameWare;
     public FXNewsProvider(){

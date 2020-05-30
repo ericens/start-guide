@@ -85,7 +85,7 @@ public class Inst {
     }
     
     public void getFiled() {
-        System.out.println("hello");
+        System.out.println("zlx.hello");
     }
     
     public String chackcast(Object obj) {

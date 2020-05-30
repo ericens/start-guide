@@ -49,8 +49,8 @@ public class CodeCacheJit  implements Opcodes {
   }
   public static void main(final String args[]) throws Exception {  
     for(int i=0;i<Integer.MAX_VALUE;i++){
-        createAndCall("hello,world"+i,"Ex"+i);
-        //Í£Ö¹jitºóÔÙgc £¬jit²»»áÆôÓÃÁË
+        createAndCall("zlx.hello,world"+i,"Ex"+i);
+        //Í£Ö¹jitï¿½ï¿½ï¿½ï¿½gc ï¿½ï¿½jitï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if(i>=2000){
         	System.gc();
         }

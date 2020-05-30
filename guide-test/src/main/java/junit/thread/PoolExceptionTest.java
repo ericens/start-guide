@@ -12,7 +12,6 @@ import java.util.concurrent.Executors;
 public class PoolExceptionTest {
 
     ExecutorService executorService= Executors.newFixedThreadPool(2);
-
     @Test
     public void execute() {
         for(int i=0;i<10;i++){

@@ -9,9 +9,8 @@ plugins {
 
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenLocal()
+    mavenCentral()
 }
 dependencies {
     implementation 'org.apache.logging.log4j:log4j-core:2.12.0'

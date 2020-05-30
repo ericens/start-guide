@@ -28,8 +28,8 @@ public class PreMainAddTimeStatAgent {
         @Override
         public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
                 ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
-            if(className.equals("src/main/resource/ch11/aop/timestat/Account")){
-                System.out.println("meet geym.zbase.ch11.aop.timestat.Account");
+            if(className.equals("src/main/resource/ch11/zlx.aop/timestat/Account")){
+                System.out.println("meet geym.zbase.ch11.zlx.aop.timestat.Account");
                 ClassReader cr = new ClassReader(classfileBuffer); 
                 ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS|ClassWriter.COMPUTE_FRAMES); 
                 TimeStatClassAdapter classAdapter = new TimeStatClassAdapter(cw); 

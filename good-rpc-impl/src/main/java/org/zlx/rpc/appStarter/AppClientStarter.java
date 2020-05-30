@@ -28,7 +28,7 @@ public class AppClientStarter<T> {
         //TODO 加入多线程测试，看看能发送信息 和接受信息正确。
         while (true) {
             try {
-                String param="hello server";
+                String param="zlx.hello server";
                 log.info("call server:{}",param);
 
                 Object echoStr=helloServiceI.sayHi(param);

@@ -448,7 +448,7 @@ public class MmapTest {
     @Test
     public void test13() throws Exception {
         String dir = "/Users/kirito/data/";
-        RandomAccessFile memoryMappedFile = new RandomAccessFile(dir + "hello.data", "rw");
+        RandomAccessFile memoryMappedFile = new RandomAccessFile(dir + "zlx.hello.data", "rw");
         FileChannel channel = memoryMappedFile.getChannel();
         int messageSize = 10000;
         ExecutorService executorService = Executors.newFixedThreadPool(10);
@@ -458,7 +458,7 @@ public class MmapTest {
                 @Override
                 public void run() {
                     try {
-                        channel.write(ByteBuffer.wrap("hello world!".getBytes()));
+                        channel.write(ByteBuffer.wrap("zlx.hello world!".getBytes()));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -479,11 +479,11 @@ public class MmapTest {
     @Test
     public void test14() throws Exception {
         String dir = "/Users/kirito/data/";
-        RandomAccessFile memoryMappedFile = new RandomAccessFile(dir + "hello.data", "rw");
+        RandomAccessFile memoryMappedFile = new RandomAccessFile(dir + "zlx.hello.data", "rw");
         FileChannel channel = memoryMappedFile.getChannel();
         int messageSize = 10000;
         AtomicInteger position = new AtomicInteger(0);
-        final int messageLen = "hello world!".getBytes().length;
+        final int messageLen = "zlx.hello world!".getBytes().length;
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         CountDownLatch countDownLatch = new CountDownLatch(messageSize);
         ThreadLocal<ByteBuffer> byteBufferThreadLocal = ThreadLocal.withInitial(() -> ByteBuffer.allocateDirect(messageLen));

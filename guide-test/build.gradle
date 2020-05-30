@@ -9,12 +9,14 @@ plugins {
 
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
+    compile group: 'com.lmax', name: 'disruptor', version: '3.4.2'
+
+
     implementation 'junit:junit:4.12'
     implementation 'org.easymock:easymock:4.0.2'
     implementation 'org.db4j:kilim:2.0.1-jdk7'

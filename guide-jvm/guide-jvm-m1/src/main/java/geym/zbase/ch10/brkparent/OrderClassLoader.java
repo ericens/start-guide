@@ -56,7 +56,7 @@ public class OrderClassLoader extends ClassLoader {
 				byte[] bytes = baos.toByteArray();
 
 //				ClassLoader.class.
-//				clazz = super.defineClass(className, bytes, 0, bytes.length);
+				clazz = super.defineClass(className, bytes, 0, bytes.length);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

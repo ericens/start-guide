@@ -18,6 +18,7 @@ public class DowJonesNewsListener implements InitializingBean , BeanNameAware,
     private static final Logger log = LoggerFactory.getLogger(DowJonesNewsListener.class);
 
 
+
     String name="listener";
     DowJonesNewsPersister persister;
 
